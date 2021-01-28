@@ -12,6 +12,12 @@ import { RegisterClientComponent } from './components/register-client/register-c
 import { RegisterProductComponent } from './components/register-product/register-product.component';
 import { RegisterOrderComponent } from './components/register-order/register-order.component';
 import { ErrorComponent } from './components/error/error.component';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { ClientDetailComponent } from './components/client-detail/client-detail.component';
+import { OrderDetailComponent } from './components/order-detail/order-detail.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -23,11 +29,16 @@ import { ErrorComponent } from './components/error/error.component';
     RegisterClientComponent,
     RegisterProductComponent,
     RegisterOrderComponent,
-    ErrorComponent
+    ErrorComponent,
+    ClientDetailComponent,
+    OrderDetailComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
-    routing
+    routing,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     appRoutingProviders

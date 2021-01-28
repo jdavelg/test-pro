@@ -1,1 +1,27 @@
-<p>client works!</p>
+<div *ngIf="location==='/mi-tienda/clientes'">
+
+    <h2 class="mt-3 mb-3">Listado de clientes</h2>
+    <table class="table" *ngIf="clients!==null && clients!==''&& clients!==undefined">
+        <thead class="thead-info">
+          <tr class="bg-info">
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            
+          <tr *ngFor="let cliente of clients">
+            <th scope="row">{{cliente.id}}</th>
+            <td>{{cliente.nombre}}</td>
+            <td>{{cliente.apellidos}}</td>
+            <td><a [routerLink]="[ '/mi-tienda/clientes/mostrar/', cliente.id ]" class="btn btn-warning">Ver detalles</a></td>
+          </tr>
+        
+        </tbody>
+      </table>
+      
+ <h3 class="alert alert-danger mt-2" *ngIf="clients==null ||  clients==undefined">Aun no hay clientes que mostrar</h3>
+</div>
+<router-outlet></router-outlet>

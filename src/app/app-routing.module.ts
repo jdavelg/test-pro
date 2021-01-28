@@ -10,6 +10,7 @@ import { ProductComponent } from './components/product/product.component';
 import { RegisterClientComponent } from './components/register-client/register-client.component';
 import { RegisterOrderComponent } from './components/register-order/register-order.component';
 import { RegisterProductComponent } from './components/register-product/register-product.component';
+import { ClientDetailComponent } from './components/client-detail/client-detail.component';
 
 
 /* Define Routes */
@@ -18,15 +19,15 @@ const appRoutes: Routes = [
   { path: 'mi-tienda', component: HomeComponent,children: [
     {
       path: 'clientes',
-      component: HomeComponent,
+      component: ClientComponent,
       children: [
         {
           path: 'agregar',
           component: RegisterClientComponent
         },
         {
-          path: 'mostrar',
-          component: HomeComponent
+          path: 'mostrar/:id',
+          component: ClientDetailComponent
         }
         
       ]
