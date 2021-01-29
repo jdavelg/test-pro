@@ -26,7 +26,6 @@ export class ClientComponent implements OnInit, DoCheck {
 
   ngDoCheck(): void {
     this.location = this._router.url;
-    this.getClients();
 
   }
 

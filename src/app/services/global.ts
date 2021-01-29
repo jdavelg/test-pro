@@ -1,3 +1,3 @@
-export var global={
-    url:'http://localhost:3000/'
+export var global = {
+    url: 'http://localhost:3000/'
 }

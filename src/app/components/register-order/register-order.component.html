@@ -1,51 +1,59 @@
-<div class="col-md-12 mt-5">
+<div class="col-md-12 mt-5" *ngIf="clients!==null && clients !==undefined && products!==null && products !==undefined ">
 
-    <h2>Registrar Nueva Orden</h2> 
- <div *ngIf="status==='success'" class="alert alert-success">Exito al guardar</div>
- <div *ngIf="status==='error'" class="alert alert-success">Error al guardar</div>
+    <h2>Registrar Nueva Orden</h2>
+    <div *ngIf="status==='success'" class="alert alert-success">Exito al guardar</div>
+    <div *ngIf="status==='error'" class="alert alert-success">Error al guardar</div>
     <!-- Formulario de registro -->
-    <form class="col-md-5" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" >
-   
+    <form class="col-md-5" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+
         <div class="form-group">
             <label for="idProducto">Producto</label>
-            <select name="idProducto" class="form-control" #idProducto="ngModel" [(ngModel)]="order.idProducto" required>
-                <option  *ngFor="let product of products" [ngValue]="product.id">{{ product.nombre }}</option>
+            <select name="idProducto" class="form-control" #idProducto="ngModel" [(ngModel)]="order.idProducto"
+                required>
+                <option *ngFor="let product of products" [ngValue]="product.id">{{ product.nombre }}</option>
             </select>
-        <small *ngIf="idProducto.touched && !idProducto.valid" class="invalid-feedback d-block">
-            El producto no puede estar vacío
-        </small>
-         </div>
+            <small *ngIf="idProducto.touched && !idProducto.valid" class="invalid-feedback d-block">
+                El producto no puede estar vacío
+            </small>
+        </div>
 
-         <div class="form-group">
+        <div class="form-group">
             <label for="idCliente">Cliente</label>
             <select name="idCliente" class="form-control" #idCliente="ngModel" [(ngModel)]="order.idCliente" required>
-                <option  *ngFor="let client of clients" [ngValue]="client.id">{{ client.nombre }} {{ client.apellidos }}</option>
+                <option *ngFor="let client of clients" [ngValue]="client.id">{{ client.nombre }} {{ client.apellidos }}
+                </option>
             </select>
-        <small *ngIf="idCliente.touched && !idCliente.valid" class="invalid-feedback d-block">
-            El cliente no puede estar vacío
-        </small>
-         </div>
+            <small *ngIf="idCliente.touched && !idCliente.valid" class="invalid-feedback d-block">
+                El cliente no puede estar vacío
+            </small>
+        </div>
 
-         <div class="form-group">
+        <div class="form-group">
             <label for="cantidad">Cantidad de producto</label>
-            <input type="number" name="precio" class="form-control" #cantidad="ngModel" [(ngModel)]="order.cantidad" required>
-        <small *ngIf="!cantidad.valid && cantidad.touched" class="invalid-feedback d-block">
-            La cantidad no puede estar vacía
-        </small>
-         </div>
+            <input type="number" name="precio" class="form-control" #cantidad="ngModel" [(ngModel)]="order.cantidad"
+                required>
+            <small *ngIf="!cantidad.valid && cantidad.touched" class="invalid-feedback d-block">
+                La cantidad no puede estar vacía
+            </small>
+        </div>
 
-         <div class="form-group">
+        <div class="form-group">
             <label for="fecha">Fecha</label>
             <input type="date" name="fecha" class="form-control" #fecha="ngModel" [(ngModel)]="order.fecha" required>
-        <small *ngIf="!fecha.valid && fecha.touched" class="invalid-feedback d-block">
-            La fecha no puede estar vacía
-        </small>
-         </div>
-         
+            <small *ngIf="!fecha.valid && fecha.touched" class="invalid-feedback d-block">
+                La fecha no puede estar vacía
+            </small>
+        </div>
 
- 
-     <input type="submit" class="btn btn-success" value="registrar" [disabled]="registerForm.invalid"/>
-     
+
+
+        <input type="submit" class="btn btn-success" value="registrar" [disabled]="registerForm.invalid" />
+
     </form>
- </div>
-
+</div>
+<div class="mt-5 alert alert-danger" *ngIf="clients===null || clients===undefined">
+    por favor agrega clientes antes de continuar
+</div>
+<div class="mt-5 alert alert-danger" *ngIf="products===null || products===undefined">
+    por favor agrega productos antes de continuar
+</div>

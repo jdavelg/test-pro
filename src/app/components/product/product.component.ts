@@ -27,7 +27,6 @@ export class ProductComponent implements OnInit, DoCheck {
 
   ngDoCheck(): void {
     this.location = this._router.url;
-    this.getProducts();
 
   }
 
@@ -36,6 +35,7 @@ export class ProductComponent implements OnInit, DoCheck {
     this.getProducts();
     console.log(this._router.url);
     this.location = this._router.url;
+
 
   }
 

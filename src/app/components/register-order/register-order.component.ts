@@ -46,11 +46,11 @@ export class RegisterOrderComponent implements OnInit {
       response => {
         if (response) {
           console.log(response);
-          this.products = response;              
+          this.products = response;
         }
       },
       error => {
-       console.log(error);       
+        console.log(error);
       }
     )
   }
@@ -60,7 +60,7 @@ export class RegisterOrderComponent implements OnInit {
       response => {
         if (response) {
           console.log(response);
-          this.clients = response;          
+          this.clients = response;
         }
       },
       error => {

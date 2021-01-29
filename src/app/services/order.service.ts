@@ -8,15 +8,15 @@ import { global } from './global';
 })
 export class OrderService {
 
-  public url:string;
-  public 
+  public url: string;
+  public
 
   constructor(
-    public _http:HttpClient   
+    public _http: HttpClient
   ) {
-    this.url=global.url
-   }
-   register(order): Observable<any> {
+    this.url = global.url
+  }
+  register(order): Observable<any> {
     /* convertir objeto a json string */
     let params = JSON.stringify(order);
 
@@ -27,7 +27,7 @@ export class OrderService {
     return this._http.post(this.url + 'ordenes', params, { headers: headers });
   }
 
-   getAllOrders(): Observable<any> {
+  getAllOrders(): Observable<any> {
 
     /* hacer peticion ajax */
     return this._http.get(this.url + 'ordenes');

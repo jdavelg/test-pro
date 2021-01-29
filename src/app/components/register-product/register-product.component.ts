@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router, ActivatedRoute,Params } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Producto } from '../../models/producto';
 
 import { ProductService } from '../../services/product.service';
@@ -8,51 +8,51 @@ import { ProductService } from '../../services/product.service';
   selector: 'app-register-product',
   templateUrl: './register-product.component.html',
   styleUrls: ['./register-product.component.css'],
-  providers:[ProductService]
+  providers: [ProductService]
 })
 export class RegisterProductComponent implements OnInit {
- 
+
   registerForm = new FormGroup({
     nombre: new FormControl('', Validators.required),
     descripcion: new FormControl('', Validators.required),
     precio: new FormControl(Validators.required)
   })
-  public product:Producto;
-  public status:string;
-  
-    constructor(
-      private _route:ActivatedRoute,
-      private _router:Router,
-      private _productService:ProductService
-    ) { 
-      this.product=new Producto(null,'','',null)
-    }
+  public product: Producto;
+  public status: string;
+
+  constructor(
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private _productService: ProductService
+  ) {
+    this.product = new Producto(null, '', '', null)
+  }
 
   ngOnInit(): void {
   }
 
 
-  onSubmit(form,formDirective){
+  onSubmit(form, formDirective) {
 
     this._productService.register(form).subscribe(
-      response=>{
-if (response) {
-  console.log(response);
-  
-  if (response.id) {
-    this.status="success"
-    formDirective.reset();
-    
-  }else{
-    this.status="error"
-  }
-  
-  
-}
+      response => {
+        if (response) {
+          console.log(response);
+
+          if (response.id) {
+            this.status = "success"
+            formDirective.reset();
+
+          } else {
+            this.status = "error"
+          }
+
+
+        }
       },
-      error=>{
+      error => {
         console.log(error);
-        this.status="error"
+        this.status = "error"
       }
     )
     console.log(this.status);

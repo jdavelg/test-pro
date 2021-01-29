@@ -1,0 +1,66 @@
+{
+  "clientes": [
+    {
+      "id": 1,
+      "nombre": "Marcos",
+      "apellidos": "Flores"
+    },
+    {
+      "id": 2,
+      "nombre": "Manuel",
+      "apellidos": "Diaz"
+    },
+    {
+      "nombre": "Julio",
+      "apellidos": "Gomez",
+      "id": 6
+    },
+    {
+      "nombre": "Andrea",
+      "apellidos": "Morales",
+      "id": 7
+    }
+  ],
+  "ordenes": [
+    {
+      "id": 1,
+      "idProducto": 1,
+      "idCliente": 1,
+      "cantidad": 1,
+      "fecha": "2021-01-30"
+    },
+    {
+      "id": 2,
+      "idProducto": 2,
+      "idCliente": 7,
+      "cantidad": 6,
+      "fecha": "2021-01-30"
+    }
+  ],
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Escritorio",
+      "descripcion": "Escritorio de madera de roble",
+      "precio": 10.50
+    },
+    {
+      "id": 2,
+      "nombre": "Pantalon",
+      "descripcion": "este es un jeans masculino",
+      "precio": 20.25
+    },
+    {
+      "nombre": "camiseta",
+      "descripcion": "camiseta sin marca color azul",
+      "precio": 12.99,
+      "id": 3
+    },
+    {
+      "nombre": "Headset",
+      "descripcion": "Headset marca Corsair",
+      "precio": 15.99,
+      "id": 4
+    }
+  ]
+}

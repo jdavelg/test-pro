@@ -40,8 +40,8 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    
-    
+
+
   ],
   providers: [
     appRoutingProviders
