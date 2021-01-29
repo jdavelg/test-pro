@@ -4,12 +4,12 @@
 <div *ngIf="status==='success'" class="alert alert-success">Exito al guardar</div>
 <div *ngIf="status==='error'" class="alert alert-success">Error al guardar</div>
    <!-- Formulario de registro -->
-   <form class="col-md-5" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+   <form class="col-md-5" [formGroup]="registerForm" #formDirective="ngForm" (ngSubmit)="onSubmit(registerForm.value ,formDirective)">
   <!--   <div class="form-group">
         <label for="id">Id</label>
         <input type="number" name="id" class="form-control">
     </div> -->
-       <div class="form-group">
+       <!-- <div class="form-group">
            <label for="nombre">Nombre cliente</label>
            <input type="text" name="nombre" class="form-control" #nombre="ngModel" [(ngModel)]="client.nombre" required pattern="[a-zA-Z ]+">
        <small *ngIf="!nombre.valid && nombre.touched" class="invalid-feedback d-block">
@@ -25,7 +25,25 @@
         </small>
          </div>
 
-    <input type="submit" class="btn btn-success" value="registrar" [disabled]="registerForm.invalid"/>
+    <input type="submit" class="btn btn-success" value="registrar" [disabled]="registerForm.invalid"/> -->
     
+    <div class="form-group">
+        <label for="nombre">Nombre cliente</label>
+        <input [class.is-invalid]="registerForm.get('nombre').touched &&registerForm.get('nombre').invalid" type="text" name="nombre" class="form-control" formControlName="nombre" required pattern="[a-zA-Z ]+">
+    <!-- <small *ngIf="registerForm.get('nombre').hasError('required')" class="invalid-feedback d-block">
+        el nombre no es valido
+    </small>  -->
+     </div>
+    
+     <div class="form-group">
+         <label for="apellidos">Apellidos cliente</label>
+         <input type="text" [class.is-invalid]="registerForm.get('apellidos').touched &&registerForm.get('apellidos').invalid" name="apellidos" class="form-control" formControlName="apellidos" required pattern="[a-zA-Z ]+">
+      <!-- <small *ngIf="registerForm.get('apellidos').hasError('required')" class="invalid-feedback d-block">
+        Los apellidos no son válidos
+     </small>  -->
+      </div>
+
+ <input type="submit" class="btn btn-success" value="registrar" [disabled]="registerForm.invalid"/>
+
    </form>
 </div>

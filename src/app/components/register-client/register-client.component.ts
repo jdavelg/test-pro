@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, ActivatedRoute,Params } from '@angular/router';
 import { Client } from '../../models/client';
 
 import { ClientService } from '../../services/client.service';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-register-client',
@@ -11,36 +15,42 @@ import { ClientService } from '../../services/client.service';
   providers:[ClientService]
 })
 export class RegisterClientComponent implements OnInit {
-
+  registerForm = new FormGroup({
+    nombre: new FormControl('', Validators.required),
+    apellidos: new FormControl('', Validators.required)
+  })
   public client:Client;
 public status:string;
 
   constructor(
     private _route:ActivatedRoute,
     private _router:Router,
-    private _clientService:ClientService
+    private _clientService:ClientService,
+   
   ) { 
-    this.client=new Client(null,'','')
+    this.client=new Client(null,'','');
+   
   }
+  
+
 
   ngOnInit(): void {
   }
 
-  onSubmit(form){
+  onSubmit(form,formDirective){
 
-    this._clientService.register(this.client).subscribe(
+    this._clientService.register(form).subscribe(
       response=>{
 if (response) {
   console.log(response);
   
   if (response.id) {
     this.status="success"
-    form.reset();
+    formDirective.reset();
     
   }else{
-    this.status="error"
-  }
-  
+    this.status="error";
+  }  
   
 }
       },
@@ -50,10 +60,6 @@ if (response) {
       }
     )
     console.log(this.status);
-
-
-
-
 
   }
 

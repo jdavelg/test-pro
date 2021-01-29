@@ -11,6 +11,7 @@ import { RegisterClientComponent } from './components/register-client/register-c
 import { RegisterOrderComponent } from './components/register-order/register-order.component';
 import { RegisterProductComponent } from './components/register-product/register-product.component';
 import { ClientDetailComponent } from './components/client-detail/client-detail.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 
 /* Define Routes */
@@ -34,15 +35,15 @@ const appRoutes: Routes = [
     },
     {
       path: 'productos',
-      component: HomeComponent,
+      component: ProductComponent,
       children: [
         {
           path: 'agregar',
           component: RegisterProductComponent
         },
         {
-          path: 'mostrar',
-          component: HomeComponent
+          path: 'mostrar/:id',
+          component: ProductDetailComponent
         }
         
       ]

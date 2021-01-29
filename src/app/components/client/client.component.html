@@ -5,6 +5,7 @@
         <thead class="thead-info">
           <tr class="bg-info">
             <th scope="col">Id</th>
+            <th scope="col">Imagen</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">Acciones</th>
@@ -14,6 +15,7 @@
             
           <tr *ngFor="let cliente of clients">
             <th scope="row">{{cliente.id}}</th>
+            <td><img class="avatar" src="https://picsum.photos/300/300" alt="Card image cap" ></td>
             <td>{{cliente.nombre}}</td>
             <td>{{cliente.apellidos}}</td>
             <td><a [routerLink]="[ '/mi-tienda/clientes/mostrar/', cliente.id ]" class="btn btn-warning">Ver detalles</a></td>
