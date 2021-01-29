@@ -1,8 +1,8 @@
 <div class="container">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">
-    <img src="" width="30" height="30" class="d-inline-block align-top" alt="">  
-    Navbar
+    <img src="../assets/unnamed.png" width="30" height="30" class="d-inline-block align-top" alt="">  
+    Prueba
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -13,24 +13,46 @@
       <li class="nav-item active">
         <a class="nav-link" [routerLink]="['/mi-tienda']" rout>Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/mi-tienda/clientes']">Clientes</a>
+      
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Clientes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['/mi-tienda/clientes']">Listado de Clientes</a>
+          <a class="dropdown-item" [routerLink]="['/mi-tienda/clientes/agregar']">Agregar Clientes</a>
+          <div class="dropdown-divider"></div>
+       
+        </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/mi-tienda/productos']">Productos</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/mi-tienda/ordenes']">Ordenes</a>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Productos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['/mi-tienda/productos']">Listado de Productos</a>
+          <a class="dropdown-item" [routerLink]="['/mi-tienda/productos/agregar']">Agregar Producto</a>
+          <div class="dropdown-divider"></div>
+       
+        </div>
       </li>
       
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Ordenes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['/mi-tienda/ordenes']">Listado de Ordenes</a>
+          <a class="dropdown-item" [routerLink]="['/mi-tienda/crear-orden']">Agregar Orden</a>
+          <div class="dropdown-divider"></div>
+       
+        </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    
   </div>
 </nav><!-- fin navbar -->
 <router-outlet></router-outlet>

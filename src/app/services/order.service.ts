@@ -24,7 +24,7 @@ export class OrderService {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     /* hacer peticion ajax */
-    return this._http.post(this.url + 'productos', params, { headers: headers });
+    return this._http.post(this.url + 'ordenes', params, { headers: headers });
   }
 
    getAllOrders(): Observable<any> {

@@ -26,7 +26,8 @@ export class ProductComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck(): void {
-    this.location = this._router.url
+    this.location = this._router.url;
+    this.getProducts();
 
   }
 

@@ -14,7 +14,8 @@ export class RegisterProductComponent implements OnInit {
  
   registerForm = new FormGroup({
     nombre: new FormControl('', Validators.required),
-    apellidos: new FormControl('', Validators.required)
+    descripcion: new FormControl('', Validators.required),
+    precio: new FormControl(Validators.required)
   })
   public product:Producto;
   public status:string;
@@ -31,16 +32,16 @@ export class RegisterProductComponent implements OnInit {
   }
 
 
-  onSubmit(form){
+  onSubmit(form,formDirective){
 
-    this._productService.register(this.product).subscribe(
+    this._productService.register(form).subscribe(
       response=>{
 if (response) {
   console.log(response);
   
   if (response.id) {
     this.status="success"
-    form.reset();
+    formDirective.reset();
     
   }else{
     this.status="error"

@@ -1,5 +1,15 @@
-<div class="ml-3">
-
+<div class="ml-3 mr-3 mt-5" *ngIf="location==='/mi-tienda'|| location==='/'">
+    <div class="jumbotron">
+        <h1 class="display-4">Bienvenido/a!</h1>
+        <p class="lead">Esta es una prueba de Angular</p>
+        <hr class="my-4">
+        <p>Esta es una prueba básica realizada con Angular 10.</p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg mr-2" [routerLink]="['/mi-tienda/clientes']" role="button">Lista de clientes</a>
+          <a class="btn btn-success btn-lg  mr-2" [routerLink]="['/mi-tienda/ordenes']" role="button">Lista de ordenes</a>
+          <a class="btn btn-warning btn-lg " [routerLink]="['/mi-tienda/productos']" role="button">Lista de productos</a>
+        </p>
+      </div>
 </div>
 <router-outlet></router-outlet>
 

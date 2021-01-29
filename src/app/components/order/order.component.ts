@@ -39,8 +39,10 @@ export class OrderComponent implements OnInit {
   }
 
   ngDoCheck(): void {
-    this.location = this._router.url
-
+    this.location = this._router.url;
+    this.getOrders();   
+    this.getClients();
+    this.getOrders();
   }
 
   ngOnInit(): void {

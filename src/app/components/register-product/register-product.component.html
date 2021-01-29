@@ -1,39 +1,38 @@
 <div class="col-md-12 mt-5">
 
-    <h2>Registrar Nuevo Producto</h2> 
- <div *ngIf="status==='success'" class="alert alert-success">Exito al guardar</div>
- <div *ngIf="status==='error'" class="alert alert-success">Error al guardar</div>
+    <h2>Registrar Nuevo Producto</h2>
+    <div *ngIf="status==='success'" class="alert alert-success">Exito al guardar</div>
+    <div *ngIf="status==='error'" class="alert alert-success">Error al guardar</div>
     <!-- Formulario de registro -->
-    <form class="col-md-5" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" >
-   <!--   <div class="form-group">
-         <label for="id">Id</label>
-         <input type="number" name="id" class="form-control">
-     </div> -->
+    <form class="col-md-5" [formGroup]="registerForm" #formDirective="ngForm" (ngSubmit)="onSubmit(registerForm.value ,formDirective)">
+
         <div class="form-group">
             <label for="nombre">Nombre producto</label>
-            <input type="text" name="nombre" class="form-control" #nombre="ngModel" [(ngModel)]="product.nombre" required pattern="[a-zA-Z ]+">
-        <small *ngIf="!nombre.valid && nombre.touched" class="invalid-feedback d-block">
-            el nombre no es valido
-        </small>
-         </div>
-        
-         <div class="form-group">
-             <label for="descripcion">Descripcion Producto</label>
-             <textarea name="descripcion" class="form-control" #descripcion="ngModel" [(ngModel)]="product.descripcion" required ></textarea>
-         <small *ngIf="descripcion.touched" class="invalid-feedback d-block">
-            La descripcion no puede estar vacía
-         </small>
-          </div>
-          <div class="form-group">
-            <label for="precio">Precio de producto</label>
-            <input type="number" step=".01" name="precio" class="form-control" #precio="ngModel" [(ngModel)]="product.precio">
-        <small *ngIf="!precio.valid && precio.touched" class="invalid-feedback d-block">
-            el precio no es válido
-        </small>
-         </div>
+            <input [class.is-invalid]="registerForm.get('nombre').touched &&registerForm.get('nombre').invalid" type="text" name="nombre" class="form-control" formControlName="nombre" 
+                required pattern="[a-zA-Z ]+">
+            <small *ngIf="registerForm.get('nombre').hasError('required') && registerForm.get('nombre').touched" class="invalid-feedback d-block">
+                el nombre no es valido
+            </small>
+        </div>
 
- 
-     <input type="submit" class="btn btn-success" value="registrar" [disabled]="registerForm.invalid"/>
-     
+        <div class="form-group">
+            <label for="descripcion">Descripcion Producto</label>
+            <textarea [class.is-invalid]="registerForm.get('descripcion').touched &&registerForm.get('descripcion').invalid" name="descripcion" class="form-control" formControlName="descripcion" 
+                required></textarea>
+            <small *ngIf="registerForm.get('descripcion').hasError('required') && registerForm.get('descripcion').touched" class="invalid-feedback d-block">
+                La descripcion no puede estar vacía
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="precio">Precio de producto</label>
+            <input type="number" step=".01" name="precio" [class.is-invalid]="registerForm.get('precio').touched && registerForm.get('precio').invalid" class="form-control"  formControlName="precio" required>
+            <small *ngIf="registerForm.get('precio').hasError('required') && registerForm.get('precio').touched" class="invalid-feedback d-block">
+                el precio no es válido
+            </small>
+        </div>
+
+
+        <input type="submit" class="btn btn-success" value="registrar" [disabled]="registerForm.invalid" />
+
     </form>
- </div>
+</div>

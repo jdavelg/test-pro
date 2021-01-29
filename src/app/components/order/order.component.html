@@ -14,9 +14,17 @@
         <tbody>
             
           <tr *ngFor="let order of orders">
-            <th scope="row">{{orders.id}}</th>         
-            <td *ngFor="let product of products"><span *ngIf="product.id===order.idProducto">{{product.nombre}}</span></td>
-            <td *ngFor="let client of clients"><span *ngIf="client.id===order.idCliente">{{client.nombre.}}</span></td>
+            <th scope="row">{{order.id}}</th>         
+            <td>
+              <span *ngFor="let product of products">
+              <a [routerLink]="[ '/mi-tienda/productos/mostrar/', product.id ]" *ngIf="product.id===order.idProducto"> {{product.nombre}}</a>
+            </span>
+            </td>
+            <td >
+              <span *ngFor="let client of clients">
+               <a [routerLink]="[ '/mi-tienda/clientes/mostrar/', client.id ]" *ngIf="client.id===order.idCliente">{{client.nombre}}</a>
+              </span>
+              </td>
             <td>{{order.cantidad}}</td>
             <td>{{order.fecha}}</td>
           </tr>
@@ -24,7 +32,7 @@
         </tbody>
       </table>
       
- <h3 class="alert alert-danger mt-2" *ngIf="clients==null ||  clients==undefined">Aun no hay clientes que mostrar</h3>
+ <h3 class="alert alert-danger mt-2" *ngIf="orders==null ||  orders==undefined">Aun no hay ordenes que mostrar</h3>
 </div>
 <router-outlet></router-outlet>
 
